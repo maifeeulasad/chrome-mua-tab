@@ -26,3 +26,26 @@
 	backgroundImageReq.send();
 })();
 
+(function () {
+	let timeElem = document.getElementById("time");
+	let dateElem = document.getElementById("date");
+
+	function getTime() {
+		let today = new Date();
+            	let hour = today.getHours();
+		hour = hour.length === 1 ? ("0" + hour) : hour;
+            	let minutes = today.getMinutes();
+		minutes = minutes.length === 1 ? ("0" + minutes) : minutes;
+            	let time = hour + " : " + minutes;
+		let month = today.getUTCMonth() + 1;
+		let day = today.getUTCDate();
+		let year = today.getUTCFullYear();
+		let date = day + " / " + month + " / " + year;
+        	timeElem.innerHTML = time;
+        	dateElem.innerHTML = date;
+     		setTimeout(function () {
+            		getTime()
+        	}, 1000*10);
+    }
+    getTime();
+})();
