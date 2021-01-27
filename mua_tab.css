@@ -18,6 +18,12 @@ body, html {
 
 .timendate {
 	position: relative;
+  	filter: blur(8px);
+  	-webkit-filter: blur(8px);
+	-moz-filter: blur(8px);
+	-ms-filter: blur(8px);
+	-o-filter: blur(8px);
+
 }
 
 .time {
