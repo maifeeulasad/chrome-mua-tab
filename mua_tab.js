@@ -32,17 +32,23 @@
 
 	function getTime() {
 		let today = new Date();
+
             	let hour = today.getHours();
-		hour = hour.length === 1 ? ("0" + hour) : hour;
+		hour = hour.toString().length === 1 ? ("0" + hour) : hour;
             	let minutes = today.getMinutes();
-		minutes = minutes.length === 1 ? ("0" + minutes) : minutes;
+		minutes = minutes.toString().length === 1 ? ("0" + minutes) : minutes;
             	let time = hour + " : " + minutes;
-		let month = today.getUTCMonth() + 1;
+
 		let day = today.getUTCDate();
+		day = day.toString().length === 1 ? ("0" + day) : day;
+		let month = today.getUTCMonth() + 1;
+		month = month.toString().length === 1 ? ("0" + month) : month;
 		let year = today.getUTCFullYear();
 		let date = day + " / " + month + " / " + year;
+
         	timeElem.innerHTML = time;
         	dateElem.innerHTML = date;
+
      		setTimeout(function () {
             		getTime()
         	}, 1000*10);
