@@ -16,6 +16,7 @@
 		let img = document.createElement("img");
             	img.setAttribute("src", url);
 		img.setAttribute("alt", "chrome-mua-tab-background");
+		img.className = "bg-img" ;
 		return img;
 	}
 
