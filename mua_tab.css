@@ -1,6 +1,7 @@
 body, html {
-    height: 100%;
-    margin: 0;
+    	height: 100%;
+	width: 100%;
+    	margin: 0;
 }
 
 .background {
@@ -18,12 +19,13 @@ body, html {
 
 .timendate {
 	position: relative;
+	/*
   	filter: blur(8px);
   	-webkit-filter: blur(8px);
 	-moz-filter: blur(8px);
 	-ms-filter: blur(8px);
 	-o-filter: blur(8px);
-
+	*/
 }
 
 .time {
