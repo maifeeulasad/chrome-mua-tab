@@ -39,7 +39,7 @@
 		minutes = minutes.toString().length === 1 ? ("0" + minutes) : minutes;
             	let time = hour + " : " + minutes;
 
-		let day = today.getUTCDate();
+		let day = today.getUTCDate() + 1;
 		day = day.toString().length === 1 ? ("0" + day) : day;
 		let month = today.getUTCMonth() + 1;
 		month = month.toString().length === 1 ? ("0" + month) : month;
