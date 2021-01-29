@@ -71,9 +71,9 @@ body, html {
 }
 
 .wrapbat{
+  	bottom: 20px;
+  	left: 20px;
 	position: absolute;
-	height: 100px;
-	width: 20px;
 }
 
 
