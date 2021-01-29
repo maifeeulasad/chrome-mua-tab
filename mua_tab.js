@@ -61,12 +61,15 @@
 
 
 (function (){
+	let batteryElem = document.getElementById("battery");
+	let batteryLabelElem = document.getElementById("battery-label");
 	function getBattery() {
-		let batteryElem = document.getElementById("battery");
 		navigator
 			.getBattery()
 			.then(battery => { 
 				batteryElem.style.height = battery.level * 100 + "%";
+				batteryElem.setAttribute("label",battery.level * 100 + "%");
+				batteryLabelElem.setAttribute("label",battery.level * 100 + "%");
 			})
 		
      		setTimeout(function () {
