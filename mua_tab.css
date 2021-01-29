@@ -43,10 +43,12 @@ body, html {
 	font-size : 48px;
 	white-space: nowrap;
 	overflow: hidden;
+	text-align: center;
 }
 .date {
 	color: white;
 	font-size : 48px;
 	white-space: nowrap;
 	overflow: hidden;
+	text-align: center;
 }
