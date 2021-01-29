@@ -41,14 +41,12 @@ body, html {
 .time {
 	color: white;
 	font-size : 48px;
-	display: inline-block;
 	white-space: nowrap;
 	overflow: hidden;
 }
 .date {
 	color: white;
 	font-size : 48px;
-	display: inline-block;
 	white-space: nowrap;
 	overflow: hidden;
 }
