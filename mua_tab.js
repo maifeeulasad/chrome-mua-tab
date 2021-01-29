@@ -61,10 +61,17 @@
 
 
 (function (){
-	let batteryElem = document.getElementById("battery");
-	navigator
-		.getBattery()
-		.then(battery => { 
-			batteryElem.style.height = battery.level * 100 + "%";
-		})
+	function getBattery() {
+		let batteryElem = document.getElementById("battery");
+		navigator
+			.getBattery()
+			.then(battery => { 
+				batteryElem.style.height = battery.level * 100 + "%";
+			})
+		
+     		setTimeout(function () {
+            		getBattery()
+        	}, 1000*60*2);
+	}
+	getBattery();
 })();
