@@ -1,27 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Chrome MUA tab">
-	<title>New Tab</title>
-
-    	<script defer type="text/javascript" src="mua_tab.js"></script>
-	<link rel="stylesheet" href="mua_tab.css">
-</head>
-<body>
-	<div id="background" class="background"/>
-	<div class="wrapper glow">
-		<div class="blurred"></div>
-		<div class="timendate">
-			<div id="time" class="time"></div>
-			<div id="date" class="date"></div>
-		</div>
-	</div>
-	<div class="wrapbat">
-		<div class="battery">
-			<div id="battery" class="battery-level"/>
-		</div>
-	</div>
-</body>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Chrome MUA tab">
+      <title>New Tab</title>
+      <script defer type="text/javascript" src="mua_tab.js"></script>
+      <link rel="stylesheet" href="mua_tab.css">
+   </head>
+   <body>
+      <div id="background" class="background"/>
+		<!--
+      <div class="fab">
+         <span class="fab-action-button">
+         	<i class="fab-action-button__icon"></i>
+         </span>
+         <ul class="fab-buttons">
+            <li class="fab-buttons__item">
+               <a href="#" class="fab-buttons__link" data-tooltip="Facebook">
+               <i class="icon-material icon-material_fb"></i>
+               </a>
+            </li>
+            <li class="fab-buttons__item">
+               <a href="#" class="fab-buttons__link" data-tooltip="Twitter">
+               <i class="icon-material icon-material_tw"></i>
+               </a>
+            </li>
+            <li class="fab-buttons__item">
+               <a href="#" class="fab-buttons__link" data-tooltip="Linkedin">
+               <i class="icon-material icon-material_li"></i>
+               </a>
+            </li>
+            <li class="fab-buttons__item">
+               <a href="#" class="fab-buttons__link" data-tooltip="Google+">
+               <i class="icon-material icon-material_gp"></i>
+               </a>
+            </li>
+         </ul>
+      </div>
+	-->
+      <div class="wrapper glow">
+         <div class="blurred"></div>
+         <div class="timendate">
+            <div id="time" class="time"></div>
+            <div id="date" class="date"></div>
+         </div>
+      </div>
+      <div class="wrapbat">
+      <div class="battery">
+         <div id="battery" class="battery-level"/>
+         </div>
+      </div>
+   </body>
 </html>
