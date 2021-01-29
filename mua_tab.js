@@ -37,7 +37,9 @@
 		hour = hour.toString().length === 1 ? ("0" + hour) : hour;
             	let minutes = today.getMinutes();
 		minutes = minutes.toString().length === 1 ? ("0" + minutes) : minutes;
-            	let time = hour + " : " + minutes;
+            	let seconds = today.getSeconds();
+		seconds = seconds.toString().length === 1 ? ("0" + seconds) : seconds;
+            	let time = hour + " : " + minutes + " : " + seconds;
 
 		let day = today.getUTCDate() + 1;
 		day = day.toString().length === 1 ? ("0" + day) : day;
@@ -51,7 +53,7 @@
 
      		setTimeout(function () {
             		getTime()
-        	}, 1000*10);
+        	}, 1000*1);
     }
     getTime();
 })();
