@@ -35,10 +35,10 @@ body, html {
 
 .timendate {
 	position: relative;
+ 	backdrop-filter: blur(10px);
 }
 
 .time {
-	background-color: black;
 	color: white;
 	font-size : 48px;
 	display: inline-block;
@@ -46,7 +46,6 @@ body, html {
 	overflow: hidden;
 }
 .date {
-	background-color: black;
 	color: white;
 	font-size : 48px;
 	display: inline-block;
