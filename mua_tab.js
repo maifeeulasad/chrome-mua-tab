@@ -62,11 +62,9 @@
 
 (function (){
 	let batteryElem = document.getElementById("battery");
-	battery.innerHTML = battery.charging;
 	navigator
 		.getBattery()
 		.then(battery => { 
-			console.log(battery.level*100)
-			batteryElem.innerHTML = battery.level*100;
+			batteryElem.style.height = battery.level * 100 + "%";
 		})
 })();
