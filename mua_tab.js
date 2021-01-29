@@ -45,8 +45,9 @@
 		day = day.toString().length === 1 ? ("0" + day) : day;
 		let month = today.getUTCMonth() + 1;
 		month = month.toString().length === 1 ? ("0" + month) : month;
-		let year = today.getUTCFullYear();
-		let date = day + " / " + month + " / " + year;
+		let dayOfWeek = today.getUTCDay();
+		let daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+		let date = daysOfWeek[dayOfWeek] + " , " + day + " / " + month;
 
         	timeElem.innerHTML = time;
         	dateElem.innerHTML = date;
