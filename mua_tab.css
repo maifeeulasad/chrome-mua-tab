@@ -52,3 +52,20 @@ body, html {
 	overflow: hidden;
 	text-align: center;
 }
+
+
+.glow {
+  font-size: 80px;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 0.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff7fb;
+  }
+  
+  to {
+    text-shadow: 0 0 0px #fff7fb, 0 0 5px #fff7fb, 0 0 10px #fff;
+  }
+}
