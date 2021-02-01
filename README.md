@@ -2,8 +2,8 @@
 Just a chrome extension, to make the new tab look better
 
 ## Installation
- - Download zip, or click [here](https://github.com/maifeeulasad/chrome-mua-tab/archive/main.zip)
- - Extract
+ - Download [zip](https://github.com/maifeeulasad/chrome-mua-tab/archive/main.zip) or this [release](https://github.com/maifeeulasad/chrome-mua-tab/releases/download/v1.0.0/chrome-mua-tab-main.zip)
+ - Extract here(or whatever you may find helpful)
  - Open Chrome
  - Go to : chrome://extensions/
  - Enable developer mode, top-right corner
