@@ -67,8 +67,9 @@
 		navigator
 			.getBattery()
 			.then(battery => { 
-				batteryElem.style.height = battery.level * 100 + "%";
-				batteryLabelElem.setAttribute("title",battery.level * 100 + "%");
+				let batLevelInt = Math.round(battery.level * 100)
+				batteryElem.style.height = batLevelInt + "%";
+				batteryLabelElem.setAttribute("title",batLevelInt + "%");
 			})
 		
      		setTimeout(function () {
