@@ -137,6 +137,20 @@ html {
 	position: absolute;
 }
 
+.quote {
+	position: absolute;
+	font-size: 24px;
+	top: 10%;
+	left: 10%;
+	right: 10%;
+}
+
+.quotetext {
+	color: white;
+	backdrop-filter: blur(10px);
+	text-align: center;
+}
+
 .fab {
 	position: fixed;
 	width: 56px;

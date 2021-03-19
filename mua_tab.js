@@ -77,3 +77,26 @@
 	}
 	getBattery();
 })();
+
+(function (){
+	let quoteElem = document.getElementById("quote");
+
+	function setRandomQuote(quote){
+		quoteElem.innerHTML = quote;
+	}
+
+	function onQuotesResponse (quotesData) {
+		let responseJson = JSON.parse(this.responseText);
+		responseJson = responseJson.data.children;
+		let randomIndex = Math.random() * responseJson.length | 0;
+		let randomQuote = responseJson[randomIndex];
+		let quote =  randomQuote.data.title;
+		
+		setRandomQuote(quote);
+	}
+
+	var quotesReq = new XMLHttpRequest();
+	quotesReq.addEventListener("load", onQuotesResponse);
+	quotesReq.open("GET", "https://www.reddit.com/r/quotes/new.json");
+	quotesReq.send();
+})();
