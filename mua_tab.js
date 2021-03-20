@@ -70,6 +70,11 @@
 				let batLevelInt = Math.round(battery.level * 100)
 				batteryElem.style.height = batLevelInt + "%";
 				batteryLabelElem.setAttribute("title",batLevelInt + "%");
+				if(batLevelInt<20){
+					batteryElem.classList.add("alert");
+				}else if(batLevelInt<40){
+					batteryElem.classList.add("warn");
+				}
 			})
 		
      		setTimeout(function () {
