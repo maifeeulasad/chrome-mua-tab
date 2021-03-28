@@ -1,16 +1,27 @@
 (function (){
 	let background = document.getElementById("background");
+	let redditWallpaper = false;
+
 	function setBackground (backgroundImage) {
 		background.appendChild(backgroundImage);	
 	}
 
 	function onBackgroundImageResponse (background) {
-		let responseJson = JSON.parse(this.responseText);
-		let randomIndex = Math.random() * responseJson.length | 0;
-		let randomImage = responseJson[randomIndex];
-		let backgroundImage = createImage(randomImage.url)
-		
-		setBackground(backgroundImage);
+		if(redditWallpaper){
+			let responseJson = JSON.parse(this.responseText).data.children;
+			let randomIndex = Math.random() * responseJson.length | 0;
+			let randomImage = responseJson[randomIndex].data;
+			let backgroundImage = createImage(randomImage.url)
+			
+			setBackground(backgroundImage);
+		}else{
+			let responseJson = JSON.parse(this.responseText);
+			let randomIndex = Math.random() * responseJson.length | 0;
+			let randomImage = responseJson[randomIndex];
+			let backgroundImage = createImage(randomImage.url)
+			
+			setBackground(backgroundImage);
+		}
 	}
 	function createImage (url) {
 		let img = document.createElement("img");
@@ -22,8 +33,16 @@
 
 	var backgroundImageReq = new XMLHttpRequest();
 	backgroundImageReq.addEventListener("load", onBackgroundImageResponse);
-	backgroundImageReq.open("GET", "https://raw.githubusercontent.com/maifeeulasad/chrome-mua-tab/data-source/data.json");
-	backgroundImageReq.send();
+
+	chrome.storage.sync.get('reddit-wallpaper', function (value) {
+		redditWallpaper = value["reddit-wallpaper"];
+		if(redditWallpaper){
+			backgroundImageReq.open("GET", "https://www.reddit.com/r/wallpaper/top.json");
+		}else{
+			backgroundImageReq.open("GET", "https://raw.githubusercontent.com/maifeeulasad/chrome-mua-tab/data-source/data.json");
+		}
+		backgroundImageReq.send();
+	});
 })();
 
 (function () {
@@ -105,4 +124,17 @@
 	quotesReq.addEventListener("load", onQuotesResponse);
 	quotesReq.open("GET", "https://www.reddit.com/r/quotes/new.json");
 	quotesReq.send();
+})();
+
+
+(function (){
+	let checkRedditWallpaper = document.getElementById("input-check-reddit-wallpaper");
+
+	chrome.storage.sync.get('reddit-wallpaper', function (value) {
+		checkRedditWallpaper.checked = value["reddit-wallpaper"];
+	});
+
+	checkRedditWallpaper.onclick = () => {
+		chrome.storage.sync.set({'reddit-wallpaper': checkRedditWallpaper.checked})
+	}
 })();
