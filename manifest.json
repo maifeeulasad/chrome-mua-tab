@@ -1,9 +1,12 @@
 {
 	"manifest_version": 2,
   	"name": "Chrome MUA tab",
-    	"description": "Just a chrome extension, to make the new tab look better",
-    	"version": "0.0.0.1",
-    	"permissions" : ["tabs"],
+    	"description": "Just a chrome extension, to make the new tab look better, lively",
+    	"version": "0.0.1.0",
+    	"permissions" : [
+			"tabs",
+			"storage"
+		],
     	"chrome_url_overrides" : {
         	"newtab": "chrome_mua_tab.html"
     	}
