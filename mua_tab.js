@@ -60,7 +60,7 @@
 		seconds = seconds.toString().length === 1 ? ("0" + seconds) : seconds;
             	let time = hour + " : " + minutes + " : " + seconds;
 
-		let day = today.getUTCDate() + 1;
+		let day = today.getUTCDate();
 		day = day.toString().length === 1 ? ("0" + day) : day;
 		let month = today.getUTCMonth() + 1;
 		month = month.toString().length === 1 ? ("0" + month) : month;
