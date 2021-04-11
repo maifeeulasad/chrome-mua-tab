@@ -2,7 +2,7 @@
 Just a chrome extension, to make the new tab look better
 
 ## Installation
- - Download [zip](https://github.com/maifeeulasad/chrome-mua-tab/archive/main.zip) or this [release](https://github.com/maifeeulasad/chrome-mua-tab/releases/download/v1.0.0/chrome-mua-tab-main.zip)
+ - Download [zip](https://github.com/maifeeulasad/chrome-mua-tab/archive/main.zip) or this [release](https://github.com/maifeeulasad/chrome-mua-tab/releases/download/2.0/chrome-mua-tab.zip)
  - Extract here(or whatever you may find helpful)
  - Open Chrome
  - Go to : chrome://extensions/
@@ -12,7 +12,7 @@ Just a chrome extension, to make the new tab look better
  
 You should be good go to.
 
-## Looks something like this (2021.01.29):
-![](https://raw.githubusercontent.com/maifeeulasad/chrome-mua-tab/gh-pages/snaps/Screenshot%20from%202021-01-29%2023-02-57.png)
-## Gif(Please wait a bit - 2021.01.27) : 
+## Looks something like this (2021.04.11):
+![](https://github.com/maifeeulasad/chrome-mua-tab/blob/gh-pages/snaps/Screenshot%20from%202021-04-11%2011-06-18.png)
+## Gif(Please wait a bit - 2021.04.11) : 
 ![](https://github.com/maifeeulasad/chrome-mua-tab/blob/gh-pages/snaps/chrome_mua_tab.gif)
