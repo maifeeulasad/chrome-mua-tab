@@ -127,7 +127,7 @@
 
 	var quotesReq = new XMLHttpRequest();
 	quotesReq.addEventListener("load", onQuotesResponse);
-	quotesReq.open("GET", "https://www.reddit.com/r/quotes/new.json");
+	quotesReq.open("GET", "https://www.reddit.com/r/quotes/top.json");
 	quotesReq.send();
 })();
 
