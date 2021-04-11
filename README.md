@@ -2,7 +2,7 @@
 Just a chrome extension, to make the new tab look better
 
 ## Installation
- - Download [zip](https://github.com/maifeeulasad/chrome-mua-tab/archive/main.zip) or this [release](https://github.com/maifeeulasad/chrome-mua-tab/releases/download/v1.0.0/chrome-mua-tab-main.zip)
+ - Download [zip](https://github.com/maifeeulasad/chrome-mua-tab/archive/main.zip) or this [release](https://github.com/maifeeulasad/chrome-mua-tab/releases/download/2.0/chrome-mua-tab.zip)
  - Extract here(or whatever you may find helpful)
  - Open Chrome
  - Go to : chrome://extensions/
