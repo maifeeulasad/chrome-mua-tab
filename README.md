@@ -1,6 +1,11 @@
 # chrome-mua-tab
 Just a chrome extension, to make the new tab look better
 
+## Updating 
+ - If you have a developemnt environment setup, then just go to the directory and use `git pull`
+ - Else follow installation process
+
+
 ## Installation
  - Download [zip](https://github.com/maifeeulasad/chrome-mua-tab/archive/main.zip) or this [release](https://github.com/maifeeulasad/chrome-mua-tab/releases/download/2.0/chrome-mua-tab.zip)
  - Extract here(or whatever you may find helpful)
