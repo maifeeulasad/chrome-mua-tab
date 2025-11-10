@@ -7,20 +7,56 @@
 	}
 
 	function onBackgroundImageResponse(background) {
-		if (redditWallpaper) {
-			let responseJson = JSON.parse(this.responseText).data.children;
-			let randomIndex = Math.random() * responseJson.length | 0;
-			let randomImage = responseJson[randomIndex].data;
-			let backgroundImage = createImage(randomImage.url)
+		try {
+			if (redditWallpaper) {
+				const parsedResponse = JSON.parse(this.responseText);
+				if (!parsedResponse?.data?.children?.[0]?.data) {
+					console.error('Invalid Reddit response format');
+					return;
+				}
 
-			setBackground(backgroundImage);
-		} else {
-			let responseJson = JSON.parse(this.responseText);
-			let randomIndex = Math.random() * responseJson.length | 0;
-			let randomImage = responseJson[randomIndex];
-			let backgroundImage = createImage(randomImage.url)
+				let responseJson = parsedResponse.data.children;
+				let randomIndex = Math.floor(Math.random() * responseJson.length);
+				let randomPost = responseJson[randomIndex].data;
+				let imageUrl;
 
-			setBackground(backgroundImage);
+				if (randomPost.is_gallery) {
+					// Handle gallery post
+					if (randomPost.media_metadata) {
+						const mediaIds = Object.keys(randomPost.media_metadata);
+						const randomMediaId = mediaIds[Math.floor(Math.random() * mediaIds.length)];
+						const mediaItem = randomPost.media_metadata[randomMediaId];
+						
+						if (mediaItem?.s?.u) {
+							imageUrl = mediaItem.s.u.replace(/&amp;/g, '&'); // Fix encoded ampersands
+						}
+					}
+				} else if (randomPost.url) {
+					// Handle single image post
+					imageUrl = randomPost.url;
+				}
+
+				if (!imageUrl) {
+					console.error('No valid image URL found');
+					return;
+				}
+
+				let backgroundImage = createImage(imageUrl);
+				setBackground(backgroundImage);
+			} else {
+				const responseJson = JSON.parse(this.responseText);
+				if (!responseJson || !Array.isArray(responseJson) || !responseJson.length) {
+					console.error('Invalid local JSON response format');
+					return;
+				}
+				const randomIndex = Math.floor(Math.random() * responseJson.length);
+				const randomImage = responseJson[randomIndex];
+				const backgroundImage = createImage(randomImage.url);
+
+				setBackground(backgroundImage);
+			}
+		} catch (error) {
+			console.error('Error processing background image:', error);
 		}
 	}
 	function createImage(url) {
