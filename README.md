@@ -19,7 +19,10 @@ A minimalist Chrome extension that enhances your new tab experience with beautif
 
 Simply run `git pull` in the extension directory and refresh the extension in `chrome://extensions/`
 
-## Looks something like this (2021.04.11):
-![](https://github.com/maifeeulasad/chrome-mua-tab/blob/gh-pages/snaps/Screenshot%20from%202021-04-11%2011-06-18.png)
-## Gif(Please wait a bit - 2021.04.11) : 
-![](https://github.com/maifeeulasad/chrome-mua-tab/blob/gh-pages/snaps/chrome_mua_tab.gif)
+## Screenshots
+
+![Screenshot of the new tab page showing a beautiful wallpaper background with time, date, and quote display](https://github.com/maifeeulasad/chrome-mua-tab/blob/gh-pages/snaps/Screenshot%20from%202021-04-11%2011-06-18.png)
+
+## Demo
+
+![Animated demonstration of the new tab extension showing dynamic wallpaper changes and quote updates](https://github.com/maifeeulasad/chrome-mua-tab/blob/gh-pages/snaps/chrome_mua_tab.gif)
