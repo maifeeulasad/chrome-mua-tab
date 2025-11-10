@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="Chrome MUA tab">
-      <title>New Tab</title>
-      <script defer type="text/javascript" src="mua_tab.js"></script>
-      <link rel="stylesheet" href="mua_tab.css">
-   </head>
-   <body>
-      <div id="background" class="background"></div>
-		<!--
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="Chrome MUA tab">
+   <title>New Tab</title>
+   <script defer type="text/javascript" src="mua_tab.js"></script>
+   <link rel="stylesheet" href="mua_tab.css">
+</head>
+
+<body>
+   <div id="background" class="background"></div>
+   <!--
       <div class="fab">
          <span class="fab-action-button">
          	<i class="fab-action-button__icon"></i>
@@ -39,26 +41,27 @@
          </ul>
       </div>
 	   -->
-      <div class="quote">
-         <div class="quotetext" id="quote"></div>
+   <div class="quote">
+      <div class="quotetext" id="quote"></div>
+   </div>
+   <div class="wrapper glow">
+      <div class="blurred"></div>
+      <div class="timendate">
+         <div id="time" class="time"></div>
+         <div id="date" class="date"></div>
       </div>
-      <div class="wrapper glow">
-         <div class="blurred"></div>
-         <div class="timendate">
-            <div id="time" class="time"></div>
-            <div id="date" class="date"></div>
-         </div>
+   </div>
+   <div class="wrapbat">
+      <div class="battery" id="battery-label">
+         <div class="battery-level" id="battery"></div>
       </div>
-      <div class="wrapbat">
-         <div class="battery" id="battery-label">
-            <div class="battery-level" id="battery" ></div>
-         </div>
-      </div>
-      <div class="wrapredditwallpaper">
-         <label class="switch">
-            <input type="checkbox" id="input-check-reddit-wallpaper">
-            <span class="slider round"></span>
-         </label>
-      </div>
-   </body>
+   </div>
+   <div class="wrapredditwallpaper">
+      <label class="switch">
+         <input type="checkbox" id="input-check-reddit-wallpaper">
+         <span class="slider round"></span>
+      </label>
+   </div>
+</body>
+
 </html>
