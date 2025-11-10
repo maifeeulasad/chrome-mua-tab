@@ -1,33 +1,33 @@
-(function (){
+(function () {
 	let background = document.getElementById("background");
 	let redditWallpaper = false;
 
-	function setBackground (backgroundImage) {
-		background.appendChild(backgroundImage);	
+	function setBackground(backgroundImage) {
+		background.appendChild(backgroundImage);
 	}
 
-	function onBackgroundImageResponse (background) {
-		if(redditWallpaper){
+	function onBackgroundImageResponse(background) {
+		if (redditWallpaper) {
 			let responseJson = JSON.parse(this.responseText).data.children;
 			let randomIndex = Math.random() * responseJson.length | 0;
 			let randomImage = responseJson[randomIndex].data;
 			let backgroundImage = createImage(randomImage.url)
-			
+
 			setBackground(backgroundImage);
-		}else{
+		} else {
 			let responseJson = JSON.parse(this.responseText);
 			let randomIndex = Math.random() * responseJson.length | 0;
 			let randomImage = responseJson[randomIndex];
 			let backgroundImage = createImage(randomImage.url)
-			
+
 			setBackground(backgroundImage);
 		}
 	}
-	function createImage (url) {
+	function createImage(url) {
 		let img = document.createElement("img");
-            	img.setAttribute("src", url);
+		img.setAttribute("src", url);
 		img.setAttribute("alt", "chrome-mua-tab-background");
-		img.className = "bg-img" ;
+		img.className = "bg-img";
 		return img;
 	}
 
@@ -36,9 +36,9 @@
 
 	chrome.storage.sync.get('reddit-wallpaper', function (value) {
 		redditWallpaper = value["reddit-wallpaper"];
-		if(redditWallpaper){
+		if (redditWallpaper) {
 			backgroundImageReq.open("GET", "https://www.reddit.com/r/wallpaper/top.json");
-		}else{
+		} else {
 			backgroundImageReq.open("GET", "https://raw.githubusercontent.com/maifeeulasad/chrome-mua-tab/data-source/data.json");
 		}
 		backgroundImageReq.send();
@@ -52,20 +52,20 @@
 	function getTime() {
 		let today = new Date();
 
-            	let hour = today.getHours();
+		let hour = today.getHours();
 		hour = hour.toString().length === 1 ? ("0" + hour) : hour;
-            	let minutes = today.getMinutes();
+		let minutes = today.getMinutes();
 		minutes = minutes.toString().length === 1 ? ("0" + minutes) : minutes;
-            	let seconds = today.getSeconds();
+		let seconds = today.getSeconds();
 		seconds = seconds.toString().length === 1 ? ("0" + seconds) : seconds;
-            	let time = hour + " : " + minutes + " : " + seconds;
+		let time = hour + " : " + minutes + " : " + seconds;
 
 		let day = today.getUTCDate();
 		let dayOfWeek = today.getUTCDay();
 
-		if(-today.getTimezoneOffset() > hour * 60 + minutes){
+		if (-today.getTimezoneOffset() > hour * 60 + minutes) {
 			day += 1;
-			dayOfWeek += 1;		
+			dayOfWeek += 1;
 		}
 		day = day.toString().length === 1 ? ("0" + day) : day;
 		let month = today.getUTCMonth() + 1;
@@ -73,55 +73,55 @@
 		let daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 		let date = daysOfWeek[dayOfWeek] + " , " + day + " / " + month;
 
-        	timeElem.innerHTML = time;
-        	dateElem.innerHTML = date;
+		timeElem.innerHTML = time;
+		dateElem.innerHTML = date;
 
-     		setTimeout(function () {
-            		getTime()
-        	}, 1000*1);
-    }
-    getTime();
+		setTimeout(function () {
+			getTime()
+		}, 1000 * 1);
+	}
+	getTime();
 })();
 
 
-(function (){
+(function () {
 	let batteryElem = document.getElementById("battery");
 	let batteryLabelElem = document.getElementById("battery-label");
 	function getBattery() {
 		navigator
 			.getBattery()
-			.then(battery => { 
+			.then(battery => {
 				let batLevelInt = Math.round(battery.level * 100)
 				batteryElem.style.height = batLevelInt + "%";
-				batteryLabelElem.setAttribute("title",batLevelInt + "%");
-				if(batLevelInt<20){
+				batteryLabelElem.setAttribute("title", batLevelInt + "%");
+				if (batLevelInt < 20) {
 					batteryElem.classList.add("alert");
-				}else if(batLevelInt<40){
+				} else if (batLevelInt < 40) {
 					batteryElem.classList.add("warn");
 				}
 			})
-		
-     		setTimeout(function () {
-            		getBattery()
-        	}, 1000*60*2);
+
+		setTimeout(function () {
+			getBattery()
+		}, 1000 * 60 * 2);
 	}
 	getBattery();
 })();
 
-(function (){
+(function () {
 	let quoteElem = document.getElementById("quote");
 
-	function setRandomQuote(quote){
+	function setRandomQuote(quote) {
 		quoteElem.innerHTML = quote;
 	}
 
-	function onQuotesResponse (quotesData) {
+	function onQuotesResponse(quotesData) {
 		let responseJson = JSON.parse(this.responseText);
 		responseJson = responseJson.data.children;
 		let randomIndex = Math.random() * responseJson.length | 0;
 		let randomQuote = responseJson[randomIndex];
-		let quote =  randomQuote.data.title;
-		
+		let quote = randomQuote.data.title;
+
 		setRandomQuote(quote);
 	}
 
@@ -132,7 +132,7 @@
 })();
 
 
-(function (){
+(function () {
 	let checkRedditWallpaper = document.getElementById("input-check-reddit-wallpaper");
 
 	chrome.storage.sync.get('reddit-wallpaper', function (value) {
@@ -140,6 +140,6 @@
 	});
 
 	checkRedditWallpaper.onclick = () => {
-		chrome.storage.sync.set({'reddit-wallpaper': checkRedditWallpaper.checked})
+		chrome.storage.sync.set({ 'reddit-wallpaper': checkRedditWallpaper.checked })
 	}
 })();
