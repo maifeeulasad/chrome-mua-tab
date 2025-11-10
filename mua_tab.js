@@ -146,25 +146,58 @@
 
 (function () {
 	let quoteElem = document.getElementById("quote");
+	let retryCount = 0;
+	const MAX_RETRIES = 3;
 
 	function setRandomQuote(quote) {
 		quoteElem.innerHTML = quote;
 	}
 
-	function onQuotesResponse(quotesData) {
-		let responseJson = JSON.parse(this.responseText);
-		responseJson = responseJson.data.children;
-		let randomIndex = Math.random() * responseJson.length | 0;
-		let randomQuote = responseJson[randomIndex];
-		let quote = randomQuote.data.title;
-
-		setRandomQuote(quote);
+	function fetchQuotes() {
+		var quotesReq = new XMLHttpRequest();
+		quotesReq.addEventListener("load", onQuotesResponse);
+		quotesReq.open("GET", "https://www.reddit.com/r/quotes/top.json");
+		quotesReq.send();
 	}
 
-	var quotesReq = new XMLHttpRequest();
-	quotesReq.addEventListener("load", onQuotesResponse);
-	quotesReq.open("GET", "https://www.reddit.com/r/quotes/top.json");
-	quotesReq.send();
+	function onQuotesResponse(quotesData) {
+		try {
+			let responseJson = JSON.parse(this.responseText);
+			if (!responseJson?.data?.children?.length) {
+				if (retryCount < MAX_RETRIES) {
+					console.log(`Retrying quotes fetch, attempt ${retryCount + 1} of ${MAX_RETRIES}`);
+					retryCount++;
+					setTimeout(fetchQuotes, 1000); // Wait 1 second before retry
+					return;
+				} else {
+					console.error('Failed to fetch quotes after maximum retries');
+					setRandomQuote('Inspiring quote loading...');
+					return;
+				}
+			}
+
+			let quotes = responseJson.data.children;
+			let randomIndex = Math.floor(Math.random() * quotes.length);
+			let randomQuote = quotes[randomIndex];
+			
+			if (randomQuote?.data?.title) {
+				setRandomQuote(randomQuote.data.title);
+			} else {
+				setRandomQuote('Inspiring quote loading...');
+			}
+		} catch (error) {
+			console.error('Error processing quotes response:', error);
+			if (retryCount < MAX_RETRIES) {
+				console.log(`Retrying quotes fetch, attempt ${retryCount + 1} of ${MAX_RETRIES}`);
+				retryCount++;
+				setTimeout(fetchQuotes, 1000);
+			} else {
+				setRandomQuote('Inspiring quote loading...');
+			}
+		}
+	}
+
+	fetchQuotes();
 })();
 
 
