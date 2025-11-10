@@ -60,8 +60,18 @@ html {
 
 .glow {
 	font-size: 80px;
-	-webkit-animation: glow 1s ease-in-out infinite alternate;
+	-webkit-animation: glow 0.5s ease-in-out infinite alternate;
 	animation: glow 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+	from {
+		text-shadow: 0 0 1px #fff, 0 0 3px #fff, 0 0 5px #fff7fb;
+	}
+
+	to {
+		text-shadow: 0 0 2px #fff7fb, 0 0 4px #fff7fb, 0 0 6px #fff;
+	}
 }
 
 @-webkit-keyframes glow {
