@@ -1,0 +1,36 @@
+name: Build Chrome Extension
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Chrome Extension packaging
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y chromium-browser
+
+    - name: Generate extension key
+      run: |
+        openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+        openssl pkcs8 -topk8 -inform PEM -outform PEM -in private_key.pem -out extension_key.pem -nocrypt
+
+    - name: Package Extension
+      run: |
+        chromium --pack-extension="$GITHUB_WORKSPACE" --pack-extension-key=extension_key.pem
+        mv "$GITHUB_WORKSPACE.crx" chrome-mua-tab.crx
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: chrome-extension
+        path: |
+          chrome-mua-tab.crx
+          extension_key.pem
