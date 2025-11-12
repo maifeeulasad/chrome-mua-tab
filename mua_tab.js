@@ -73,7 +73,7 @@
 	chrome.storage.sync.get('reddit-wallpaper', function (value) {
 		redditWallpaper = value["reddit-wallpaper"];
 		if (redditWallpaper) {
-			backgroundImageReq.open("GET", "https://www.reddit.com/r/wallpaper/top.json");
+			backgroundImageReq.open("GET", "https://www.reddit.com/r/wallpaper/top.json?t=day");
 		} else {
 			backgroundImageReq.open("GET", "https://raw.githubusercontent.com/maifeeulasad/chrome-mua-tab/data-source/data.json");
 		}
@@ -156,7 +156,7 @@
 	function fetchQuotes() {
 		var quotesReq = new XMLHttpRequest();
 		quotesReq.addEventListener("load", onQuotesResponse);
-		quotesReq.open("GET", "https://www.reddit.com/r/quotes/top.json");
+		quotesReq.open("GET", "https://www.reddit.com/r/quotes/top.json?t=day");
 		quotesReq.send();
 	}
 
