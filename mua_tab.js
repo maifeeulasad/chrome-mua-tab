@@ -101,7 +101,7 @@
 
 		if (-today.getTimezoneOffset() > hour * 60 + minutes) {
 			day += 1;
-			dayOfWeek += 1;
+			dayOfWeek = (dayOfWeek + 1) % 7;
 		}
 		day = day.toString().length === 1 ? ("0" + day) : day;
 		let month = today.getUTCMonth() + 1;
